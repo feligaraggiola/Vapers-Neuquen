@@ -1,0 +1,141 @@
+<html lang="es"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5">
+  <title>Vapers de Neuquén Capital</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    html, body {
+      scroll-behavior: smooth;
+      overscroll-behavior: contain;
+      margin: 20px auto;
+      padding: 20px;
+    }
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+    @media (min-width: 2000px) {
+      body {
+        font-size: 1.25rem;
+      }
+    }
+  </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+  <!-- HEADER -->
+  <header class="bg-purple-800 text-white py-6 px-4 text-center">
+    <h1 class="text-3xl sm:text-4xl font-bold">Vapers - Argentina</h1>
+    <p class="mt-2 text-sm sm:text-base">Contactanos por WhatsApp o Instagram</p>
+    <div class="flex flex-col sm:flex-row justify-center items-center mt-4 gap-3 text-sm">
+      <div class="text-center">
+        <p class="mb-1 font-semibold">Enzo Soto</p>
+        <a href="https://wa.me/5492995189053" target="_blank" class="bg-green-500 px-4 py-2 rounded-full inline-block mb-1">WhatsApp</a><br>
+        <a href="https://instagram.com/enzo.sottoo" target="_blank" class="bg-pink-500 px-4 py-2 rounded-full inline-block">Instagram</a>
+      </div>
+      <div class="text-center">
+        <p class="mb-1 font-semibold">Tiago Sandruss</p>
+        <a href="https://wa.me/5492995963321" target="_blank" class="bg-green-500 px-4 py-2 rounded-full inline-block mb-1">WhatsApp</a><br>
+        <a href="https://instagram.com/tiaggosandruss" target="_blank" class="bg-pink-500 px-4 py-2 rounded-full inline-block">Instagram</a>
+      </div>
+    </div>
+    <div class="mt-4">
+      <p class="mb-1 font-semibold">Instagram de la Página</p>
+      <a href="https://instagram.com/vaper.neuquen" target="_blank" class="bg-pink-500 px-4 py-2 rounded-full inline-block">Instagram</a>
+    </div>
+  </header> 
+
+  <!-- PRODUCTOS -->
+  <section class="p-4 max-w-6xl mx-auto">
+    <h2 class="text-2xl sm:text-3xl font-bold mb-4 text-center text-purple-800">Seleccioná tus Vapers</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="bg-white p-4 rounded shadow">
+        <img src="img/vaper1.jpg" alt="Vaper 1" class="h-48 object-cover rounded mb-3 mx-auto">
+        <h3 class="font-bold text-lg">ELF BAR - ICE KING</h3>
+        <p class="text-sm">40.000 puffs</p>
+        <p class="font-semibold mt-1">$30.000</p>
+        <button onclick="agregarCarrito('ELF BAR - ICE KING', 30000)" class="mt-2 bg-purple-600 text-white px-3 py-1 rounded w-full">Agregar</button>
+      </div>
+
+      <div class="bg-white p-4 rounded shadow">
+        <img src="img/vaper2.jpg" alt="Vaper 2" class="h-48 object-cover rounded mb-3 mx-auto">
+        <h3 class="font-bold text-lg">ELFBAR - GH</h3>
+        <p class="text-sm">23.000 puffs</p>
+        <p class="font-semibold mt-1">$21.000</p>
+        <button onclick="agregarCarrito('ELFBAR - GH', 21000)" class="mt-2 bg-purple-600 text-white px-3 py-1 rounded w-full">Agregar</button>
+      </div>
+
+      <div class="bg-white p-4 rounded shadow">
+        <img src="img/vaper3.jpg" alt="Vaper 3" class="h-48 object-cover rounded mb-3 mx-auto">
+        <h3 class="font-bold text-lg">IGNITE - V250</h3>
+        <p class="text-sm">25.000 puffs</p>
+        <p class="font-semibold mt-1">$23.000</p>
+        <button onclick="agregarCarrito('IGNITE - V250', 23000)" class="mt-2 bg-purple-600 text-white px-3 py-1 rounded w-full">Agregar</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- CARRITO -->
+  <section class="p-4 max-w-3xl mx-auto mt-6 bg-white shadow rounded">
+    <h2 class="text-xl sm:text-2xl font-bold mb-4 text-purple-800">Tu Pedido</h2>
+    <ul id="carrito" class="space-y-2 mb-4 text-sm text-gray-700"></ul>
+    <p id="total" class="font-semibold mb-4">Total: $0</p>
+    <div class="flex flex-wrap gap-2">
+      <a id="btn-whatsapp-enzo" href="#" target="_blank" class="bg-green-500 text-white px-4 py-2 rounded">Enviar a Enzo</a>
+      <a id="btn-whatsapp-tiago" href="#" target="_blank" class="bg-green-600 text-white px-4 py-2 rounded">Enviar a Tiago</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-purple-800 text-white text-center p-4 mt-8">
+    <p>© 2025 Reventa de Vapers | Todos los derechos reservados</p>
+  </footer>
+
+  <!-- SCRIPT JS -->
+  <script>
+    let carrito = [];
+    let total = 0;
+
+    function agregarCarrito(nombre, precio) {
+      carrito.push({ nombre, precio });
+      actualizarCarrito();
+    }
+
+    function eliminarProducto(index) {
+      carrito.splice(index, 1);
+      actualizarCarrito();
+    }
+
+    function actualizarCarrito() {
+      const lista = document.getElementById("carrito");
+      const totalText = document.getElementById("total");
+      lista.innerHTML = "";
+      total = 0;
+
+      carrito.forEach((item, i) => {
+        const li = document.createElement("li");
+        li.className = "flex justify-between items-center bg-gray-100 px-3 py-2 rounded";
+        li.innerHTML = `
+          <span>${item.nombre} - $${item.precio}</span>
+          <button onclick="eliminarProducto(${i})" class="text-red-500 hover:text-red-700 text-lg font-bold">✕</button>
+        `;
+        lista.appendChild(li);
+        total += item.precio;
+      });
+
+      totalText.textContent = "Total: $" + total;
+
+      const mensaje = encodeURIComponent(
+        "Hola, quiero pedir estos productos:\n" +
+        carrito.map(i => `• ${i.nombre} - $${i.precio}`).join("\n") +
+        `\nTotal: $${total}`
+      );
+
+      document.getElementById("btn-whatsapp-enzo").href = `https://wa.me/5492995189053?text=${mensaje}`;
+      document.getElementById("btn-whatsapp-tiago").href = `https://wa.me/5492995963321?text=${mensaje}`;
+    }
+  </script>
+
+
+</body></html>
