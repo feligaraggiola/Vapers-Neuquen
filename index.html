@@ -1,115 +1,129 @@
-<html lang="es"><head>
+<html lang="es">
+<head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5">
+  <meta name="viewport" content="width=device-width, initial-scale=5">
   <title>Vapers de Neuquén Capital</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    html, body {
-      scroll-behavior: smooth;
-      overscroll-behavior: contain;
-      margin: 20px auto;
-      padding: 20px;
-    }
-    img {
-      max-width: 100%;
-      height: auto;
-      display: block;
-    }
-    @media (min-width: 2000px) {
-      body {
-        font-size: 1.25rem;
-      }
-    }
+    html, body { scroll-behavior: smooth; overscroll-behavior: contain; }
+    img { max-width: 100%; height: auto; display: block; }
   </style>
 </head>
 <body class="bg-gray-100 text-gray-800">
 
-  <!-- HEADER -->
-  <header class="bg-purple-800 text-white py-6 px-4 text-center">
-    <h1 class="text-3xl sm:text-4xl font-bold">Vapers - Argentina</h1>
-    <p class="mt-2 text-sm sm:text-base">Contactanos por WhatsApp o Instagram</p>
-    <div class="flex flex-col sm:flex-row justify-center items-center mt-4 gap-3 text-sm">
-      <div class="text-center">
-        <p class="mb-1 font-semibold">Enzo Soto</p>
-        <a href="https://wa.me/5492995189053" target="_blank" class="bg-green-500 px-4 py-2 rounded-full inline-block mb-1">WhatsApp</a><br>
-        <a href="https://instagram.com/enzo.sottoo" target="_blank" class="bg-pink-500 px-4 py-2 rounded-full inline-block">Instagram</a>
-      </div>
-      <div class="text-center">
-        <p class="mb-1 font-semibold">Tiago Sandruss</p>
-        <a href="https://wa.me/5492995963321" target="_blank" class="bg-green-500 px-4 py-2 rounded-full inline-block mb-1">WhatsApp</a><br>
-        <a href="https://instagram.com/tiaggosandruss" target="_blank" class="bg-pink-500 px-4 py-2 rounded-full inline-block">Instagram</a>
+  <!-- HEADER / HERO -->
+  <header class="relative bg-purple-800 text-white text-center">
+    <img src="fondo-vapers.jpg" class="absolute inset-0 w-full h-full object-cover opacity-20" alt="">
+    <div class="relative z-10 py-10 px-4">
+      <h1 class="text-4xl font-bold">Vapers - Neuquén Capital</h1>
+      <p class="mt-2 text-lg">Envíos rápidos y atención personalizada</p>
+      <div class="flex flex-wrap justify-center items-center gap-4 mt-6">
+        <div class="text-center">
+          <p class="mb-1 font-semibold">Enzo Soto</p>
+          <a href="https://wa.me/5492995189053" target="_blank" class="bg-green-500 hover:bg-green-600 px-4 py-2 rounded-full inline-block mb-1">WhatsApp</a><br>
+          <a href="https://instagram.com/enzo.sottoo" target="_blank" class="bg-pink-500 hover:bg-pink-600 px-4 py-2 rounded-full inline-block">Instagram</a>
+        </div>
+        <div class="text-center">
+          <p class="mb-1 font-semibold">Felipe Garaggiola</p>
+          <a href="https://wa.me/542972416465" target="_blank" class="bg-green-500 hover:bg-green-600 px-4 py-2 rounded-full inline-block mb-1">WhatsApp</a><br>
+          <a href="https://instagram.com/felipe.Garaggiola" target="_blank" class="bg-pink-500 hover:bg-pink-600 px-4 py-2 rounded-full inline-block">Instagram</a>
+        </div>
+        <div class="text-center">
+          <p class="mb-1 font-semibold">Tiago Sandruss</p>
+          <a href="https://wa.me/5492995963321" target="_blank" class="bg-green-500 hover:bg-green-600 px-4 py-2 rounded-full inline-block mb-1">WhatsApp</a><br>
+          <a href="https://instagram.com/tiaggosandruss" target="_blank" class="bg-pink-500 hover:bg-pink-600 px-4 py-2 rounded-full inline-block">Instagram</a>
+        </div>
       </div>
     </div>
-    <div class="mt-4">
-      <p class="mb-1 font-semibold">Instagram de la Página</p>
-      <a href="https://instagram.com/vaper.neuquen" target="_blank" class="bg-pink-500 px-4 py-2 rounded-full inline-block">Instagram</a>
-    </div>
-  </header> 
+
+    <!-- Botón Carrito fijo -->
+    <button onclick="toggleCarrito()" class="fixed top-4 right-4 bg-purple-700 hover:bg-purple-800 text-white px-4 py-2 rounded shadow-lg z-50">
+      🛒 Carrito (<span id="contadorCarrito">0</span>)
+    </button>
+  </header>
 
   <!-- PRODUCTOS -->
-  <section class="p-4 max-w-6xl mx-auto">
-    <h2 class="text-2xl sm:text-3xl font-bold mb-4 text-center text-purple-800">Seleccioná tus Vapers</h2>
+  <section class="p-6 max-w-6xl mx-auto">
+    <h2 class="text-3xl font-bold mb-6 text-center text-purple-800">Seleccioná tus Vapers</h2>
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-      <div class="bg-white p-4 rounded shadow">
-        <img src="img/vaper1.jpg" alt="Vaper 1" class="h-48 object-cover rounded mb-3 mx-auto">
+      
+      <!-- Producto -->
+      <div class="bg-white p-4 rounded-lg shadow hover:shadow-xl transition">
+        <img src="elfbar iceking 40puff.jpg" alt="ELF BAR" class="h-48 object-cover rounded mb-3 mx-auto">
         <h3 class="font-bold text-lg">ELF BAR - ICE KING</h3>
-        <p class="text-sm">40.000 puffs</p>
-        <p class="font-semibold mt-1">$30.000</p>
-        <button onclick="agregarCarrito('ELF BAR - ICE KING', 30000)" class="mt-2 bg-purple-600 text-white px-3 py-1 rounded w-full">Agregar</button>
+        <p class="text-sm text-gray-600">40.000 puffs</p>
+        <p class="text-xl font-bold text-purple-700 mt-1">$30.000</p>
+        <button onclick="agregarCarrito('ELF BAR - ICE KING', 30000)" class="mt-3 bg-purple-600 hover:bg-purple-700 text-white px-3 py-2 rounded w-full">Agregar</button>
       </div>
 
-      <div class="bg-white p-4 rounded shadow">
-        <img src="img/vaper2.jpg" alt="Vaper 2" class="h-48 object-cover rounded mb-3 mx-auto">
-        <h3 class="font-bold text-lg">ELFBAR - GH</h3>
-        <p class="text-sm">23.000 puffs</p>
-        <p class="font-semibold mt-1">$21.000</p>
-        <button onclick="agregarCarrito('ELFBAR - GH', 21000)" class="mt-2 bg-purple-600 text-white px-3 py-1 rounded w-full">Agregar</button>
+      <div class="bg-white p-4 rounded-lg shadow hover:shadow-xl transition">
+        <img src="ignite v300.jpg" alt="IGNITE V300" class="h-48 object-cover rounded mb-3 mx-auto">
+        <h3 class="font-bold text-lg">IGNITE V300</h3>
+        <p class="text-sm text-gray-600">30.000 puffs</p>
+        <p class="text-xl font-bold text-purple-700 mt-1">$21.000</p>
+        <button onclick="agregarCarrito('IGNITE V300', 21000)" class="mt-3 bg-purple-600 hover:bg-purple-700 text-white px-3 py-2 rounded w-full">Agregar</button>
       </div>
 
-      <div class="bg-white p-4 rounded shadow">
-        <img src="img/vaper3.jpg" alt="Vaper 3" class="h-48 object-cover rounded mb-3 mx-auto">
-        <h3 class="font-bold text-lg">IGNITE - V250</h3>
-        <p class="text-sm">25.000 puffs</p>
-        <p class="font-semibold mt-1">$23.000</p>
-        <button onclick="agregarCarrito('IGNITE - V250', 23000)" class="mt-2 bg-purple-600 text-white px-3 py-1 rounded w-full">Agregar</button>
+      <div class="bg-white p-4 rounded-lg shadow hover:shadow-xl transition">
+        <img src="ignite v150.jpg" alt="IGNITE V150" class="h-48 object-cover rounded mb-3 mx-auto">
+        <h3 class="font-bold text-lg">IGNITE V150</h3>
+        <p class="text-sm text-gray-600">15.000 puffs</p>
+        <p class="text-xl font-bold text-purple-700 mt-1">$23.000</p>
+        <button onclick="agregarCarrito('IGNITE V150', 23000)" class="mt-3 bg-purple-600 hover:bg-purple-700 text-white px-3 py-2 rounded w-full">Agregar</button>
       </div>
     </div>
   </section>
 
-  <!-- CARRITO -->
-  <section class="p-4 max-w-3xl mx-auto mt-6 bg-white shadow rounded">
-    <h2 class="text-xl sm:text-2xl font-bold mb-4 text-purple-800">Tu Pedido</h2>
-    <ul id="carrito" class="space-y-2 mb-4 text-sm text-gray-700"></ul>
-    <p id="total" class="font-semibold mb-4">Total: $0</p>
-    <div class="flex flex-wrap gap-2">
-      <a id="btn-whatsapp-enzo" href="#" target="_blank" class="bg-green-500 text-white px-4 py-2 rounded">Enviar a Enzo</a>
-      <a id="btn-whatsapp-tiago" href="#" target="_blank" class="bg-green-600 text-white px-4 py-2 rounded">Enviar a Tiago</a>
+  <!-- CARRITO LATERAL -->
+  <aside id="carritoLateral" class="fixed top-0 right-0 w-80 h-full bg-white shadow-lg transform translate-x-full transition-transform z-50 flex flex-col">
+    <div class="p-4 border-b flex justify-between items-center">
+      <h2 class="text-lg font-bold">Tu Pedido</h2>
+      <button onclick="toggleCarrito()" class="text-red-500 text-xl font-bold">✕</button>
     </div>
-  </section>
+    <ul id="listaCarrito" class="flex-1 overflow-auto p-4 space-y-2 text-sm"></ul>
+    <div class="p-4 border-t">
+      <p id="total" class="font-semibold mb-3">Total: $0</p>
+      <a id="btnWhatsappEnzo" href="#" target="_blank" class="block bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded mb-2 text-center">Enviar a Enzo</a>
+      <a id="btnWhatsappTiago" href="#" target="_blank" class="block bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded text-center">Enviar a Tiago</a>
+         <a id="btnWhatsappTiago" href="#" target="_blank" class="block bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded text-center">Enviar a Felipe</a>
+
+    </div>
+  </aside>
 
   <!-- FOOTER -->
   <footer class="bg-purple-800 text-white text-center p-4 mt-8">
     <p>© 2025 Reventa de Vapers | Todos los derechos reservados</p>
   </footer>
 
-  <!-- SCRIPT JS -->
+  <!-- SCRIPT -->
   <script>
-    let carrito = [];
+    let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
     let total = 0;
+
+    function toggleCarrito() {
+      document.getElementById("carritoLateral").classList.toggle("translate-x-full");
+    }
+
+    function guardarCarrito() {
+      localStorage.setItem("carrito", JSON.stringify(carrito));
+    }
 
     function agregarCarrito(nombre, precio) {
       carrito.push({ nombre, precio });
+      guardarCarrito();
       actualizarCarrito();
     }
 
     function eliminarProducto(index) {
       carrito.splice(index, 1);
+      guardarCarrito();
       actualizarCarrito();
     }
 
     function actualizarCarrito() {
-      const lista = document.getElementById("carrito");
+      const lista = document.getElementById("listaCarrito");
       const totalText = document.getElementById("total");
+      const contador = document.getElementById("contadorCarrito");
       lista.innerHTML = "";
       total = 0;
 
@@ -125,6 +139,7 @@
       });
 
       totalText.textContent = "Total: $" + total;
+      contador.textContent = carrito.length;
 
       const mensaje = encodeURIComponent(
         "Hola, quiero pedir estos productos:\n" +
@@ -132,10 +147,12 @@
         `\nTotal: $${total}`
       );
 
-      document.getElementById("btn-whatsapp-enzo").href = `https://wa.me/5492995189053?text=${mensaje}`;
-      document.getElementById("btn-whatsapp-tiago").href = `https://wa.me/5492995963321?text=${mensaje}`;
+      document.getElementById("btnWhatsappEnzo").href = `https://wa.me/5492995189053?text=${mensaje}`;
+      document.getElementById("btnWhatsappTiago").href = `https://wa.me/5492995963321?text=${mensaje}`;
+      document.getElementById("btnWhatsappTiago").href = `https://wa.me/5492972416465?text=${mensaje}`;
     }
+
+    actualizarCarrito();
   </script>
-
-
-</body></html>
+</body>
+</html>
